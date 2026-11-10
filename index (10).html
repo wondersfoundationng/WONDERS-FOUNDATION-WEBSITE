@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wonders Foundation | No student walks alone</title>
+<meta property="og:type" content="website"><meta property="og:site_name" content="Wonders Foundation">
+<meta property="og:title" content="Wonders Foundation | No student walks alone">
+<meta property="og:description" content="Food, transport, manuals, healthcare and school fees support for students. Ask for help, or help a student today.">
+<meta property="og:image" content="https://wondersfoundationng.github.io/WONDERS-FOUNDATION-WEBSITE/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Wonders Foundation | No student walks alone"><meta name="twitter:image" content="https://wondersfoundationng.github.io/WONDERS-FOUNDATION-WEBSITE/og-image.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="Wonders Foundation is a faith-rooted aid and community foundation for students. No student walks alone.">
+<meta name="theme-color" content="#4A1A68">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M6 30V15a10 10 0 0 1 20 0v15z' fill='%234A1A68'/%3E%3Ccircle cx='16' cy='9' r='2' fill='%23E8A93B'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--plum:#4A1A68;--cplum:#8E4585;--lilac:#EFE4F0;--bg:#FFF8ED;--ink:#1F1424;--gold:#E8A93B;--card:#EFE4F0;--line:#d9c6dc;--on-plum:#FFF8ED;--bad:#9b1c1c;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--plum:#C9A3E0;--cplum:#D9A2D0;--lilac:#2D1B3A;--bg:#1F1424;--ink:#FFF8ED;--card:#2D1B3A;--line:#4a3358;--on-plum:#1F1424;--bad:#f2a1a1}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;line-height:1.55}
+h1,h2,h3{font-family:'Sora',system-ui,sans-serif;color:var(--plum);line-height:1.2;margin:0 0 .5em}
+h1{font-size:clamp(1.8rem,6vw,2.8rem)}h2{font-size:1.5rem}h3{font-size:1.05rem}
+a{color:var(--cplum)}
+header{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.logo{font-family:'Sora',sans-serif;font-weight:700;color:var(--plum);cursor:pointer;display:flex;align-items:center;gap:8px;background:none;border:0;font-size:1rem;padding:0}
+.arch{width:26px;height:30px;background:var(--plum);border-radius:13px 13px 3px 3px;position:relative;color:var(--on-plum);font-size:9px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px}
+.arch:before{content:"";position:absolute;top:3px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+#menubtn{display:none;background:var(--lilac);color:var(--plum);border:0;border-radius:10px;padding:9px 14px;font:700 .95rem 'DM Sans',sans-serif;cursor:pointer;position:relative}
+@media (max-width:800px){#menubtn{display:inline-block}nav{display:none;width:100%;flex-direction:column;gap:2px;padding-top:6px}nav.open{display:flex}nav button{text-align:left;padding:12px 10px;font-size:1.05rem}}
+#scrollbtns{position:fixed;right:12px;bottom:16px;display:flex;flex-direction:column;gap:8px;z-index:40}
+#scrollbtns button{width:44px;height:44px;border-radius:50%;border:0;background:var(--plum);color:var(--on-plum);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.25);transition:opacity .2s}
+#scrollbtns button.off{opacity:.3;pointer-events:none}
+nav button{background:none;border:0;color:var(--ink);font:inherit;padding:8px 10px;border-radius:8px;cursor:pointer;position:relative}
+nav button.on,nav button:hover{background:var(--lilac);color:var(--plum)}
+.dot{display:none;position:absolute;top:6px;right:4px;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.dot.show{display:block}
+main{max-width:860px;margin:0 auto;padding:24px 16px 64px}
+.view{display:none}.view.on{display:block}
+.btn{font:700 1rem 'DM Sans',sans-serif;border-radius:12px;padding:14px 22px;border:2px solid var(--plum);cursor:pointer;background:var(--plum);color:var(--on-plum);text-decoration:none;display:inline-block}
+.btn.out{background:transparent;color:var(--plum)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#1F1424}
+.btn[disabled]{opacity:.6;cursor:wait}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
+.card{background:var(--card);border-radius:16px;padding:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0}
+.hero{padding:28px 0 8px}.hero p{font-size:1.15rem;max-width:560px}
+.amt{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.amt button{background:var(--card);border:2px solid transparent;border-radius:14px;padding:12px;font:inherit;color:var(--ink);text-align:left;cursor:pointer}
+.amt button b{display:block;color:var(--plum);font-family:'Sora',sans-serif}
+.amt button small{font-size:.8rem;opacity:.85}
+.amt button.sel{border-color:var(--plum);background:var(--bg)}
+.need{background:var(--card);border-radius:14px;padding:12px;text-align:center;font-weight:500}.need span{font-size:1.5rem;display:block}
+label{display:block;font-weight:500;margin:12px 0 4px}
+input,select,textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit;background:var(--bg);color:var(--ink)}
+.chk{display:flex;gap:8px;align-items:flex-start;font-weight:400}
+.chk input{width:auto;margin-top:5px}
+.seg{display:inline-flex;border:2px solid var(--plum);border-radius:12px;overflow:hidden;margin:12px 0}
+.seg button{border:0;background:transparent;color:var(--plum);padding:10px 18px;font:inherit;cursor:pointer}
+.seg button.sel{background:var(--plum);color:var(--on-plum)}
+.note{font-size:.88rem;opacity:.85}
+.err{color:var(--bad);font-weight:500;min-height:1.2em;margin:8px 0 0}
+.okmsg{font-weight:500}
+.quote{border-left:4px solid var(--cplum);padding:8px 16px;font-family:'Sora',sans-serif;color:var(--plum);margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:.92rem}td,th{padding:10px;border-bottom:1px solid var(--line);text-align:left}
+details{background:var(--card);border-radius:12px;padding:12px 16px;margin:8px 0}summary{cursor:pointer;font-weight:700}
+.cap{display:none;background:var(--gold);color:#1F1424;padding:12px;border-radius:12px;margin:12px 0}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.modal{position:fixed;inset:0;background:rgba(30,10,45,.6);display:none;align-items:flex-end;justify-content:center;z-index:50;padding:12px}.modal>.card{width:100%;max-width:460px;max-height:88vh;overflow:auto;position:relative;background:var(--bg)}@media(min-width:600px){.modal{align-items:center}}
+.modal .x{position:absolute;right:10px;top:8px;background:none;border:0;font-size:1.8rem;line-height:1;cursor:pointer;color:var(--plum)}.plats{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:10px 0}.plats .btn{padding:12px 8px;text-align:center}
+.btn{white-space:normal}
+.bar{background:var(--bg);border-radius:8px;height:10px;overflow:hidden;margin:10px 0 4px}.bar div{height:100%;background:var(--plum)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.chips span{background:var(--card);border-radius:999px;padding:6px 14px}
+.stat b{display:block;font-family:'Sora',sans-serif;font-size:1.6rem;color:var(--plum)}
+.pin{font-size:.78rem;font-weight:700;color:var(--cplum);text-transform:uppercase;letter-spacing:.05em}
+.callout{border-left:4px solid var(--gold);padding:2px 0 2px 14px;margin:18px 0;font-weight:600;color:var(--plum);font-size:1.08rem}
+.band{background:var(--plum);color:var(--on-plum);overflow:hidden;white-space:nowrap;border-radius:14px;padding:16px 0;margin:0 0 20px}
+.band div{display:inline-block;padding-left:100%;animation:slide 18s linear infinite;font:700 clamp(1.2rem,4.5vw,1.9rem) 'Sora',sans-serif}
+.band span{margin-right:3rem}.band span:after{content:"✦";margin-left:3rem;color:var(--gold)}
+@media (max-width:600px){.band{padding:9px 0;border-radius:10px;margin-bottom:14px}.band div{font-size:.95rem;animation-duration:14s}.band span{margin-right:1.6rem}.band span:after{margin-left:1.6rem}}
+@keyframes slide{to{transform:translateX(-100%)}}
+.req{color:var(--bad)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 18px}.tabs button{border:2px solid var(--plum);background:transparent;color:var(--plum);padding:8px 14px;border-radius:999px;font:700 .92rem 'DM Sans',sans-serif;cursor:pointer}.tabs button.on{background:var(--plum);color:var(--on-plum)}
+.sr{position:absolute;left:-9999px}
+.stats{grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0 4px}.stats .card{padding:12px;font-size:.85rem;line-height:1.3}.stats .stat b{font-size:1.2rem}
+.capbox{margin-top:6px}
+footer{border-top:1px solid var(--line);padding:20px 16px;text-align:center;font-size:.9rem;color:var(--cplum)}
+</style></head><body>
+<header><button class="logo" onclick="go('home')" aria-label="Wonders Foundation home"><span class="arch">WF</span>Wonders Foundation</button>
+<button id="menubtn" aria-expanded="false" aria-controls="nav" onclick="toggleMenu()"><span class="dot" id="menudot"></span><span id="menulabel">☰ Menu</span></button>
+<nav id="nav"><button data-v="home">Home</button><button data-v="give">Give</button><button data-v="partners">Partners</button><button data-v="crowdfunds">Crowdfunds</button><button data-v="ask">Ask for help</button><button data-v="chapters">Chapters</button><button data-v="announcements">Announcements<span class="dot" id="newdot"></span></button></nav></header>
+<noscript><p style="padding:16px">Please turn on JavaScript to use this site.</p></noscript>
+<main>
+
+<section class="view" id="home">
+<h1 class="sr">Wonders happen when we come together</h1>
+<div class="band" aria-hidden="true"><div><span>Wonders happen when we come together</span><span>Wonders happen when we come together</span><span>Wonders happen when we come together</span></div></div>
+<h2>Who we are</h2>
+<p>Wonders Foundation is a student aid and community foundation. We provide financial and practical support to students in need, including food, transport, data, manuals, healthcare and school fees, and we give students a community where they come through for one another.</p>
+<p class="callout">We believe that no student should have to carry burdens alone. Wonders exists to share those burdens with them, even beyond financial provision.</p>
+<p>Any student in need may ask for help, and anyone may give to support them.</p>
+<div class="row"><button class="btn gold" onclick="go('give')">Give</button><button class="btn out" onclick="go('ask')">Ask for help</button></div>
+<div class="grid stats" id="home_stats" style="display:none"></div>
+<h2>What we do</h2>
+<div class="grid">
+<div class="card"><h3>Wonders Aid</h3><p>Food, clothing, transport, data, manuals, medical care and emergency help.</p></div>
+<div class="card"><h3>Wonders Fund</h3><p>A general pool that covers everyday needs and larger ones like school fees and rent.</p></div>
+<div class="card"><h3>Wonders Crowdfunds</h3><p>When a need is very large or the pool is running low, we open a verified crowdfund so many people can come through for one student.</p></div>
+<div class="card"><h3>Wonders Communities</h3><p>School chapters where members ask, give and come through for each other.</p></div></div>
+<h2>Why we exist</h2>
+<p>A student can have the grades, the admission and the dream, and still wonder whether there is enough for the bus home, the next handout or the meal they skipped to pay for both. No student should have to choose between eating and learning, and no student should carry that pressure alone.</p>
+<p>Wonders Foundation is faith-rooted. The name honours our founder’s father, whose name was Wonders, and Isaiah 9:6 names Jesus “Wonderful”. We are Christian in foundation and open in service: every student in need is welcome, whatever their religion, tribe or background, and faith is never a condition of help.</p>
+<div class="quote">No student walks alone.<br><small>God provides, we show up.</small></div>
+<div class="row"><button class="btn gold" onclick="go('give')">Give</button><button class="btn out" onclick="go('ask')">Ask for help</button></div>
+</section>
+
+<section class="view" id="give">
+<h1>Give</h1><p>Any amount is welcome. Choose where your gift goes, or leave it with the general pool to be used where it is needed most.</p>
+<div class="seg" id="kind"><button class="sel" data-k="cash">Give money</button><button data-k="inkind">Give in kind</button></div>
+<div id="cash"><div class="amt" id="amts"></div>
+<p class="note">These amounts are examples only. They are not minimums, and they do not mean your gift will be used for that exact thing.</p>
+<label for="other">Other amount (₦)</label><input id="other" type="number" min="100" inputmode="numeric" placeholder="e.g. 2000">
+<div class="seg" id="freq"><button class="sel" data-f="once">Just once</button><button data-f="regular">Regularly</button></div>
+<div id="oftenbox" style="display:none"><label for="howoften">How often?</label><select id="howoften"><option value="weekly">Every week</option><option value="monthly" selected>Every month</option><option value="semester">Every semester</option><option value="session">Every session</option></select><p class="note">We email you a reminder each time, with a link to give again. Nothing is taken from your account automatically.</p></div>
+<div id="forbox"><label for="g_for">Where should it go?</label><select id="g_for"><option>Where it is needed most</option><option>Food</option><option>Transport</option><option>Data and manuals</option><option>Clothing</option><option>Healthcare</option><option>School fees</option><option>Rent</option></select></div>
+<div class="card" id="cfnote" style="display:none;margin-top:12px"><b>Giving to a crowdfund:</b> <span id="cftitle"></span> <button class="btn out" style="padding:6px 12px;margin-left:8px" onclick="clearCf()">Change</button></div></div>
+<div id="inkind" style="display:none">
+<label for="ik_item">What are you giving? <span class="req">*</span></label><select id="ik_item"><option>Food or foodstuff</option><option>Clothes</option><option>Manuals or textbooks</option><option>Other</option></select>
+<label for="ik_qty">How much or how many? <span class="req">*</span></label><input id="ik_qty" placeholder="e.g. 2 cartons, 10 books">
+<label for="ik_desc">Describe what you are giving <span class="req">*</span></label><textarea id="ik_desc" rows="3" placeholder="e.g. unexpired noodles, in cartons of 40"></textarea>
+<label for="ik_loc">Your exact location <span class="req">*</span></label><textarea id="ik_loc" rows="2" placeholder="Street, area, landmark and town"></textarea>
+<p class="note">We accept items that are unexpired and in good condition. After you submit, we send you to the coordinator on WhatsApp, who takes it from there.</p></div>
+<label for="g_name">Your name <span class="req">*</span></label><input id="g_name" autocomplete="name" placeholder="Your name">
+<label for="g_email">Email <span class="req">*</span></label><input id="g_email" type="email" autocomplete="email" placeholder="you@example.com"><p class="note">For your receipt and reminders.</p>
+<label for="g_phone">WhatsApp number <span class="req">*</span></label><input id="g_phone" type="tel" autocomplete="tel" placeholder="080...">
+<label for="g_heard">How did you hear about Wonders?</label><select id="g_heard" class="heard"></select>
+<label for="g_notes">Anything you would like to tell us? (optional)</label><textarea id="g_notes" rows="3" maxlength="600"></textarea>
+<label class="chk"><input type="checkbox" id="g_anon"> Give anonymously</label>
+<label class="chk"><input type="checkbox" id="g_wall"> You may list my name on the thank-you wall</label>
+<input class="hp" id="g_hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<p class="note" id="paynote">To give, tap the button and we open WhatsApp, where your coordinator sends you the account details. You get a receipt once your gift is confirmed.</p>
+<div class="row"><button class="btn gold" id="g_btn" onclick="giveNow()">Give</button></div>
+<p class="err" id="g_err" role="alert"></p>
+<div class="card" style="margin-top:16px"><b>Prefer to back one student’s need?</b><p>See the crowdfunds that are open right now.</p><button class="btn out" onclick="go('crowdfunds')">See crowdfunds</button></div>
+<div class="card sharebox" style="margin-top:12px"><h3>Help us reach more students</h3><p>Share a flier that tells people about Wonders and invites them to give.</p>
+<div class="row" style="margin:10px 0"><button class="btn gold" onclick="shareFlier()">Share on your status or story so others can donate</button><button class="btn out" onclick="copyGiveLink()">Copy link</button></div>
+<p class="note sharemsg" role="status"></p></div>
+<h2 style="margin-top:28px">Good to know</h2>
+<details><summary>Where does my gift go, and can I choose?</summary><p>Use the “Where should it go?” menu to choose food, transport, data and manuals, clothing, healthcare, school fees or rent. If you leave it on “where it is needed most”, it joins the general pool, so it can’t be traced to one student, and the report shows what the pool achieved together.</p></details>
+<details><summary>How do I give?</summary><p>Choose an amount and tap Give. We open WhatsApp so your coordinator can send you the account details. When our organisation bank account is ready, we will show it here.</p></details>
+<details><summary>How will I know my gift was used well?</summary><p>Wherever possible we pay the school, hospital, vendor or provider directly and keep the receipt. The pool’s activity is also shared in a report.</p></details>
+<details><summary>Does Wonders take a share of my gift to run the foundation?</summary><p>Running costs come from the general pool, so the pool supports students and also covers the costs of running Wonders. We don’t have a figure yet, and once we have enough history we will share how much goes where.</p></details>
+<details><summary>Can I give towards one student’s need?</summary><p>Yes. Pick School fees or Rent in the menu, or see our open crowdfunds. When a need is very large or the pool is running low, we open a verified crowdfund for one student, with their consent.</p></details>
+<details><summary>What does giving anonymously mean?</summary><p>Your name will not appear in any public list, report or thank-you. We keep your details privately only to match your gift and send your receipt.</p></details>
+<details><summary>Can I change or stop a regular gift?</summary><p>Yes. Every reminder email has a link to stop. Nothing is taken from your account automatically.</p></details>
+<details><summary>How can I check that Wonders is genuine?</summary><p>Use only the contact details and links on this site, and expect a receipt for every gift. Our registration details will be shown here once registration is complete.</p></details>
+<details><summary>Do I need to share your faith to give or to receive help?</summary><p>No. Wonders is Christian in foundation and open to everyone. Your faith, tribe or background makes no difference to giving or to getting help.</p></details>
+</section>
+
+<section class="view" id="thanks">
+<h1 id="thanksh">Thank you</h1>
+<div class="row" id="wabox" style="display:none"><a class="btn gold" id="wabtn" target="_blank" rel="noopener">Click here to get the account details</a></div>
+<p id="tmsg" style="font-size:1.1rem"></p>
+<div class="card" id="refcard" style="display:none"><b>Reference: <span id="gref"></span></b><p class="note" id="refnote">Screenshot this to keep it.</p></div>
+<p class="note" id="anonnote"></p>
+<div class="card" style="margin-top:12px"><h3>The Giving Confession</h3><div class="quote" style="margin:8px 0">I am a vessel, not the source; what I give is seed, and nothing given in faith is ever lost.<br><small>Proverbs 11:25 · Luke 6:38</small></div>
+<button class="btn out" onclick="downloadCard()">Download confession card</button></div>
+<details><summary>Prayer over your gift</summary><p>Father, we thank You for this gift and for the heart behind it; let it reach the one it was meant for, multiplied in value and wrapped in dignity, and let the giver be refilled and the receiver strengthened, in Jesus' name, Amen.</p></details>
+<div class="card" id="monthlycard" style="margin-top:12px"><h3>Want to come through regularly?</h3><p>Give again on a schedule you choose. You can stop at any time.</p><button class="btn out" onclick="makeRegular()">Set up regular giving</button></div>
+<div class="row"><button class="btn out" id="sharebtn" onclick="shareThanks()">Share on your status or story so others can donate</button></div>
+</section>
+
+<section class="view" id="partners">
+<h1>Partner with us so no student walks alone</h1>
+<p>Individuals, churches, businesses and corporates are all partners. Someone giving ₦2,000 a month is as much a partner as anyone.</p>
+<div class="row"><button class="btn gold" onclick="document.getElementById('startp').scrollIntoView({behavior:'smooth'})">Start a partnership</button><button class="btn out" onclick="go('give')">Just give</button></div>
+<h2>Giving or partnering?</h2>
+<div class="grid"><div class="card"><h3>Giving</h3><p>Give any amount, once or whenever you like, straight to the general pool. No sign-up and no commitment.</p><p class="note">Best for: a gift today.</p></div>
+<div class="card"><h3>Partnering</h3><p>A regular commitment: a set amount or an in-kind gift every month, or sponsoring a specific cause such as a student’s term or a category of need for a semester. A coordinator confirms the details with you, and you choose how you are recognised.</p><p class="note">Best for: churches, businesses, corporates, and individuals who want to stand with students over time.</p></div></div>
+<p class="note">Either way, your gift goes through Wonders, and partners and students never contact each other. Specific causes also receive a short summary and receipt once the need is closed.</p>
+<div class="grid"><div class="card"><h3>Partner generally</h3><p>Give a set amount or an in-kind gift every month into the general pool.</p></div><div class="card"><h3>Partner for a cause</h3><p>Sponsor a student's term, adopt a category of need for a semester, or give in kind to a named need.</p></div></div>
+<table><tr><th></th><th>General</th><th>Specific</th></tr><tr><td>Where it goes</td><td>General pool</td><td>The cause you chose</td></tr><tr><td>Report</td><td>Activity report for the whole pool</td><td>Summary and receipt when closed</td></tr><tr><td>Student contact</td><td>None</td><td>None</td></tr></table>
+<div class="quote">Your gift goes through Wonders. Partners and students do not contact each other.</div>
+<p class="note">Your gift joins others, and the report shows what the pool achieved together. Recognition is your choice: named, anonymous or not listed.</p>
+<h2 id="startp">Start a partnership</h2>
+<label for="p_name">Name or organisation <span class="req">*</span></label><input id="p_name">
+<label for="p_type">I am a</label><select id="p_type"><option>Individual</option><option>Church</option><option>Business</option><option>Corporate</option></select>
+<label for="p_wants">I want to</label><select id="p_wants" onchange="partnerWants()"><option>Give monthly to the general pool</option><option>Give in kind regularly</option><option>Sponsor a student's term</option><option>Adopt a category of need</option></select>
+<div id="p_ik" style="display:none">
+<label for="p_item">What will you give? <span class="req">*</span></label><input id="p_item" placeholder="e.g. foodstuff, manuals, clothes">
+<label for="p_qty">How much or how many? <span class="req">*</span></label><input id="p_qty" placeholder="e.g. 5 cartons a month">
+<label for="p_desc">Describe what you will give <span class="req">*</span></label><textarea id="p_desc" rows="3"></textarea>
+<label for="p_loc">Your exact location <span class="req">*</span></label><textarea id="p_loc" rows="2" placeholder="Street, area, landmark and town"></textarea></div>
+<label for="p_contact">WhatsApp or phone (optional)</label><input id="p_contact" type="tel">
+<label for="p_email">Email <span class="req">*</span></label><input id="p_email" type="email" autocomplete="email">
+<input class="hp" id="p_hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<p class="err" id="p_err" role="alert"></p><p class="okmsg" id="p_ok"></p>
+<div class="row" id="p_wa" style="display:none"><a class="btn gold" id="p_wabtn" target="_blank" rel="noopener">Message the coordinator on WhatsApp</a></div>
+<div class="row"><button class="btn gold" id="p_btn" onclick="partnerSend()">Partner with us</button><button class="btn out" onclick="go('give')">Just give</button><a class="btn out" id="kitbtn" href="partner-kit.pdf" download style="display:none">Download partner kit</a></div>
+</section>
+
+<section class="view" id="ask">
+<div id="askform">
+<h1>Ask for help</h1>
+<div class="card" style="margin:0 0 12px"><h3>The Asking Confession</h3><div class="quote" style="margin:8px 0">Asking is not weakness, it is how a family works; my need is not my identity, my dream is.</div></div>
+<div class="row"><button class="btn" onclick="document.getElementById('formbox').scrollIntoView({behavior:'smooth'})">Start my Ask</button></div>
+<div class="grid"><div class="card">Your Ask is handled by the Wonders team.</div><div class="card">Asking does not count against you.</div><div class="card">Help is not guaranteed, but every Ask is read and answered.</div></div>
+<div class="cap" id="cap"><b>We're at capacity right now.</b> Your Ask is saved and we'll reach you.</div>
+<h3>What you can ask for</h3>
+<div class="grid" id="needs" style="grid-template-columns:repeat(auto-fit,minmax(110px,1fr))"></div>
+<p class="note">School fees and rent are normal Asks too. For very large needs, or when the pool is running low, we may suggest a crowdfund, and you decide what is shown.</p>
+<h3 style="margin-top:20px">What happens next</h3>
+<div class="grid"><div class="card"><b>1. We read it</b><p>A coordinator reads your Ask.</p></div><div class="card"><b>2. We message you</b><p>On WhatsApp, with your reference number sent to your email.</p></div><div class="card"><b>3. Proof, if needed</b><p>For larger needs we ask for proof, so the fund stays fair for everyone.</p></div></div>
+<details id="checkbox"><summary>Already asked? Check my Ask</summary>
+<label for="chk_ref">Your reference</label><input id="chk_ref" placeholder="WF-XXXX-01" autocapitalize="characters">
+<div class="row"><button class="btn out" id="chk_btn" onclick="checkAsk()">Check</button></div>
+<div id="chk_out" aria-live="polite"></div></details>
+<div class="card" id="formbox" style="margin-top:16px"><h3>Your Ask</h3>
+<div class="card" id="cfreq" style="display:none;border:2px solid var(--cplum);margin-bottom:8px"><b>You are requesting a crowdfund.</b> Fill in your Ask below. After you send it, you will add the details for your crowdfund. Nothing goes public until a coordinator has checked it and you have agreed. <button type="button" class="btn out" style="padding:6px 12px;margin-top:8px" onclick="cancelCfReq()">Cancel</button></div>
+<p class="note"><span class="req">*</span> means required</p>
+<label for="a_name">What should we call you? (Your first name) <span class="req">*</span></label><input id="a_name" autocomplete="given-name">
+<label for="a_wa">WhatsApp number <span class="req">*</span></label><input id="a_wa" type="tel" autocomplete="tel">
+<label for="a_email">Email address <span class="req">*</span></label><input id="a_email" type="email" autocomplete="email" placeholder="We send your reference number here">
+<label for="a_heard">How did you hear about Wonders?</label><select id="a_heard" class="heard"></select>
+<label for="a_school">School</label><select id="a_school" onchange="schoolChanged()"></select>
+<div id="a_other_box" style="display:none"><label for="a_other">Which school?</label><input id="a_other"></div>
+<label for="a_level">Level</label><select id="a_level"><option>100</option><option>200</option><option>300</option><option>400</option><option>500</option><option>Postgraduate</option></select>
+<label for="a_need">What do you need? <span class="req">*</span></label><select id="a_need" onchange="renderNeed()"><option value="">Choose one</option><option>Data</option><option>Transport</option><option>A meal or food for a few days</option><option>A manual</option><option>Textbook(s)</option><option>Clothing</option><option>Food for several weeks</option><option>School fees</option><option>Medical or healthcare</option><option>Rent</option><option>Something else</option></select>
+<div id="a_fields"></div>
+<label for="a_story">In a few lines, tell us what is going on</label><textarea id="a_story" rows="3"></textarea>
+<label class="chk"><input type="checkbox" id="a_c1"> I confirm the information I have given is true, and I understand Wonders may not be able to help if it cannot be confirmed.</label>
+<label class="chk"><input type="checkbox" id="a_c2"> I agree to Wonders keeping my information only as long as needed, and deleting my documents after the case closes.</label>
+<input class="hp" id="a_hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<p class="err" id="a_err" role="alert"></p>
+<div class="row"><button class="btn gold" id="a_btn" onclick="sendAsk()">Send my Ask</button></div></div>
+<div class="card" style="background:var(--plum);color:var(--on-plum);margin:16px 0"><b>Emergency?</b> WhatsApp the word EMERGENCY to <b id="emno">09075942734</b>, and still send your Ask.</div>
+</div>
+<div id="askdone" style="display:none">
+<h1>You asked, and that's the first step.</h1>
+<div class="card" id="cfnext" style="display:none;border:2px solid var(--cplum)"><b>Next step for your crowdfund</b><p>Add the details for your crowdfund. Nothing goes public until a coordinator has checked it and you have agreed.</p><button class="btn gold" id="cfnextbtn">Add my crowdfund details</button></div>
+<div class="card"><b>Reference: <span id="ref"></span></b><p class="note">Screenshot this to keep it. We also emailed it to you.</p></div>
+<h3 style="margin-top:20px">What happens next</h3><p>1. A coordinator reads your Ask.<br>2. They message you on WhatsApp.<br>3. Depending on the size of the need, you may be asked for proof, so the fund stays fair for everyone.</p>
+<p class="note">A coordinator will reply as soon as they can. You can check where your Ask is any time with your reference.</p>
+<p class="note"><b>Emergency?</b> WhatsApp the word EMERGENCY to <b id="emno2">09075942734</b>.</p>
+<div class="card" style="margin-top:16px"><h3>The Asking Confession</h3><div class="quote" style="margin:8px 0">Asking is not weakness, it is how a family works; my need is not my identity, my dream is.</div>
+<p>Download it and post it on your WhatsApp status, so another student knows it is okay to ask.</p>
+<div class="row" style="margin:10px 0 0"><button class="btn gold" onclick="downloadCard('ask')">Download confession card</button><button class="btn out" onclick="shareAsk()">Share on your status or story</button></div></div>
+<div class="row"><a class="btn out" id="tgdone" target="_blank" rel="noopener">Join the Wonders community on Telegram</a><button class="btn out" onclick="resetAsk()">Send another Ask</button></div>
+</div></section>
+
+<section class="view" id="crowd">
+<h1>Your crowdfund details</h1>
+<p>Your Ask is marked for a crowdfund, either because you asked for one or because a coordinator suggested it. A crowdfund is shared with donors, so you decide what is shown. Nothing goes public until your proof is checked and you have confirmed.</p>
+<label for="c_ref">Reference number</label><input id="c_ref" placeholder="WF-XXXX-01" autocapitalize="characters">
+<label for="c_story">Your story, in your own words</label><textarea id="c_story" rows="4" placeholder="What is going on, and what would this change for you?"></textarea>
+<label for="c_amt">Amount needed, in naira</label><input id="c_amt" type="number" inputmode="numeric">
+<label for="c_deadline">Deadline, if any</label><input id="c_deadline" type="date">
+<label for="c_dept">Your department (only shown if you tick it below)</label><input id="c_dept">
+<label>What may we show on the campaign page? Leave out anything you like.</label>
+<label class="chk"><input type="checkbox" id="c_name"> My first name</label>
+<label class="chk"><input type="checkbox" id="c_photo"> My photo or face</label>
+<label class="chk"><input type="checkbox" id="c_level"> My level and department</label>
+<label class="chk"><input type="checkbox" id="c_school"> My school</label>
+<p class="note">Your story and the amount needed are always shown, because that is what a crowdfund is. A public page can be found on Google.</p>
+<label class="chk"><input type="checkbox" id="c_ok"> I understand this is a public crowdfund and I agree to my story and the amount being shared as I chose above. I can change what is shown before it goes live.</label>
+<input class="hp" id="c_hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<p class="err" id="c_err" role="alert"></p>
+<div class="row"><button class="btn gold" id="c_btn" onclick="crowdSend()">Submit crowdfund details</button></div>
+<div class="card" id="crowddone" style="display:none"><b>Queued for crowdfund</b><p>Thank you. Your details are saved. Once your proof is checked, your Ask is queued. At each school we run up to 5 crowdfunds a month and no more than 3 at a time, and your coordinator will tell you where you stand.</p></div>
+</section>
+
+<section class="view" id="crowdfunds">
+<h1>Crowdfunds</h1>
+<p>When a need is very large or the pool is running low, we open a verified crowdfund for one student’s need. Each one is checked by Wonders, and the student agrees what is shown.</p>
+<div class="grid" id="cf_list"><div class="card">Loading…</div></div>
+<div class="card" style="margin-top:12px"><h3>Need a crowdfund for your own need?</h3><p>Send an Ask and ask for a crowdfund. A coordinator checks it, and nothing goes public until you agree.</p><button class="btn out" onclick="requestCrowdfund()">Request a crowdfund</button></div>
+<div class="card sharebox" style="margin-top:12px"><h3>Help us reach more students</h3><p>Share a flier that tells people about Wonders and invites them to give.</p>
+<div class="row" style="margin:10px 0"><button class="btn gold" onclick="shareFlier()">Share on your status or story so others can donate</button><button class="btn out" onclick="copyGiveLink()">Copy link</button></div>
+<p class="note sharemsg" role="status"></p></div>
+
+</section>
+
+<section class="view" id="chapters">
+<h1>Chapters</h1>
+<div class="card"><h3>Wonders FUTA</h3><p>Our first community, at the Federal University of Technology, Akure. Members ask, give and come through for one another: a lent manual, a shared meal, a bus fare, a word of guidance.</p><p class="note">Coordinator: <span id="coordname">Nifemi</span></p>
+<div class="row"><a class="btn gold" id="tgfuta" href="https://t.me/+tGIQ_g6_idc2MmM0" target="_blank" rel="noopener">Join Wonders FUTA on Telegram</a></div></div>
+<div class="card" style="margin-top:12px"><h3>Not a FUTA student?</h3><p>Join the general Wonders community.</p>
+<div class="row"><a class="btn out" id="tggen" href="https://t.me/WondersFoundation" target="_blank" rel="noopener">Join the general Wonders community</a></div></div>
+<div class="card" style="margin-top:12px"><h3>Wonders UNILAG</h3><p>Coming after operations are running at FUTA.</p></div>
+<p class="note">You can join without needing anything, and you can ask without joining.</p>
+
+<h2 style="margin-top:28px">Bring Wonders to my school</h2>
+<p>Want a Wonders chapter at your school? Tell us where, and we will be in touch.</p>
+<label for="s_school">Your school</label><input id="s_school">
+<label for="s_name">Your name</label><input id="s_name">
+<label for="s_role">You are a</label><select id="s_role"><option>Student</option><option>Staff member</option><option>Church or student leader</option><option>Other</option></select>
+<label for="s_contact">WhatsApp or email</label><input id="s_contact">
+<label for="s_note">Anything else? (optional)</label><textarea id="s_note" rows="2"></textarea>
+<input class="hp" id="s_hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<p class="err" id="s_err" role="alert"></p><p class="okmsg" id="s_ok"></p>
+<div class="row"><button class="btn out" id="s_btn" onclick="schoolReqSend()">Send</button></div>
+
+
+</section>
+
+<section class="view" id="announcements">
+<h1>Announcements</h1>
+<div class="tabs" id="anntabs" role="tablist"><button class="on" data-t="ann">Announcements</button><button data-t="stories">Stories</button><button data-t="wall">Thank-you wall</button><button data-t="impact" id="tabbtn_impact">Impact</button></div>
+<div class="tabpane" id="tab_ann">
+<div class="seg" id="annaud"><button class="sel" data-a="FUTA">Wonders FUTA</button><button data-a="GENERAL">General</button></div>
+<div id="ann_list"><div class="card">Loading…</div></div>
+<div class="card" style="margin-top:16px"><h3>Get announcements by email</h3>
+<label for="n_email">Your email</label><input id="n_email" type="email" autocomplete="email">
+<label for="n_aud">I want</label><select id="n_aud"><option value="ALL">Everything</option><option value="FUTA">Wonders FUTA only</option></select>
+<input class="hp" id="n_hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<p class="err" id="n_err" role="alert"></p><p class="okmsg" id="n_ok"></p>
+<div class="row"><button class="btn out" id="n_btn" onclick="subscribeSend()">Notify me</button></div>
+<p class="note">Every email has an unsubscribe link.</p></div>
+</div>
+<div class="tabpane" id="tab_stories" style="display:none">
+<h2>Stories</h2>
+<div id="stories"></div>
+<details><summary>Share what Wonders meant to you</summary>
+<label for="t_msg">Your story</label><textarea id="t_msg" rows="3" maxlength="600"></textarea>
+<label for="t_name">Your name (optional)</label><input id="t_name">
+<label for="t_school">Your school</label><select id="t_school" onchange="$('#t_other').style.display = this.value ? 'none' : 'block'"></select>
+<input id="t_other" placeholder="Write your school" style="display:none;margin-top:8px">
+<label class="chk"><input type="checkbox" id="t_perm"> You may share my words on this site.</label>
+<label class="chk"><input type="checkbox" id="t_show"> You may show my name with them.</label>
+<input class="hp" id="t_hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<p class="err" id="t_err" role="alert"></p><p class="okmsg" id="t_ok"></p>
+<div class="row"><button class="btn out" id="t_btn" onclick="testimonialSend()">Send my story</button></div>
+<p class="note">We read every story first, and nothing is shown without your permission.</p></details></div>
+<div class="tabpane" id="tab_wall" style="display:none">
+<h2>Thank-you wall</h2><p class="note" id="wall_note">Thank you to everyone who came through and chose to be named.</p><div class="chips" id="wall"></div></div>
+<div class="tabpane" id="tab_impact" style="display:none">
+<h2>Impact</h2>
+<div class="seg" id="impseg"><button class="sel" data-i="0">All time</button><button data-i="1">This month</button></div>
+<div class="grid" id="impact"></div></div>
+</section>
+
+<section class="view" id="notice"><h1 id="notice_h"></h1><p id="notice_p" style="font-size:1.1rem"></p><div class="row"><button class="btn out" onclick="go('home')">Back to the site</button></div></section>
+
+</main>
+<div id="scrollbtns"><button id="sbtop" aria-label="Go to the top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15l7-7 7 7"/></svg></button><button id="sbbottom" aria-label="Go to the bottom" onclick="window.scrollTo({top: document.documentElement.scrollHeight, behavior: 'smooth'})"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button></div>
+<div class="modal" id="shmodal" role="dialog" aria-modal="true" aria-labelledby="shh" onclick="if (event.target === this) closeShare()"><div class="card">
+<button class="x" onclick="closeShare()" aria-label="Close">×</button>
+<h3 id="shh" style="padding-right:28px">Share on your status or story so others can donate</h3>
+<div id="shstep1">
+<div id="shnativebox" style="display:none"><button class="btn gold" id="shnative" onclick="shNative()" style="width:100%">Share my flier to a story or status</button>
+<p class="note">Your flier opens in your phone’s share menu, ready to post. Choose Instagram, then Story, or WhatsApp, then My status. The flier carries the link as a QR code, so there is nothing to type.</p>
+<p class="note" style="margin-top:14px"><b>Or choose a platform</b></p></div>
+<p class="note" id="shchoose">Choose where to share.</p><div class="plats" id="plats"></div>
+<div class="row" style="margin:6px 0"><button class="btn out" onclick="shCopy()">Copy caption and link</button></div></div>
+<div id="shstep2" style="display:none"><button class="btn out" onclick="shStep(1)" style="padding:6px 14px">Back</button><h3 id="shplat" style="margin-top:12px"></h3><div class="plats" id="shopts"></div></div>
+<div id="shnote" role="status" style="margin-top:8px"></div>
+</div></div>
+<footer>Wonders Foundation · No student walks alone · God provides, we show up</footer>
+<script>
+/* ===== Settings ===== */
+// Paste the Google Apps Script web app address between the quotes (see SETUP.md).
+const API_URL = 'https://script.google.com/macros/s/AKfycbytRqct__Ix-8ta9SfTACdhv28EbrWbzg62SLJP2-3RXFW54N6Xnm10DqQ1McQt-QeMSQ/exec';
+const DEFAULT_SCHOOLS = [
+  {name:'FUTA (Wonders FUTA)',code:'FUTA',status:'Active',coordinator:'Nifemi',whatsapp:'09075942734',telegram:'https://t.me/+tGIQ_g6_idc2MmM0',capacityFull:false},
+  {name:'UNILAG (coming soon)',code:'UNILAG',status:'Coming soon',telegram:'https://t.me/WondersFoundation'},
+  {name:'My school isn’t listed yet',code:'OTHER',status:'Active',coordinator:'Gold',whatsapp:'09134450648',telegram:'https://t.me/WondersFoundation',capacityFull:false}
+];
+let CFG = {schools:DEFAULT_SCHOOLS, defaultSchool:'FUTA', latestAnnouncement:'', showImpact:true};
+
+/* ===== Helpers ===== */
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const naira = n => '₦' + Number(n || 0).toLocaleString('en-NG');
+const validEmail = e => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);
+const intl = n => { const d = String(n || '').replace(/\D/g, ''); return (d.length === 11 && d[0] === '0') ? '234' + d.slice(1) : d; };
+const waUrl = (num, text) => 'https://wa.me/' + intl(num) + '?text=' + encodeURIComponent(text);
+const siteUrl = () => location.origin + location.pathname;
+const safeUrl = u => { try { const x = new URL(u, location.href); return /^https?:$/.test(x.protocol) ? x.href : ''; } catch (e) { return ''; } };
+function h(tag, attrs, ...kids) {
+  const e = document.createElement(tag);
+  Object.entries(attrs || {}).forEach(([k, v]) => { if (k === 'class') e.className = v; else if (k.startsWith('on')) e[k] = v; else if (v !== false && v != null) e.setAttribute(k, v); });
+  kids.flat().forEach(c => e.append(c && c.nodeType ? c : document.createTextNode(c == null ? '' : c)));
+  return e;
+}
+function school(code) { return CFG.schools.find(s => s.code === code); }
+function giveSchool() { return school(CFG.defaultSchool) || CFG.schools[0]; }
+function lsGet(k) { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } }
+function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+
+async function api(action, payload) {
+  if (!API_URL) return {ok: false, network: true, offline: true, error: 'This page is not connected to Wonders yet.'};
+  const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 20000);
+  try {
+    const res = await fetch(API_URL, {method: 'POST', headers: {'Content-Type': 'text/plain;charset=utf-8'}, body: JSON.stringify(Object.assign({action}, payload)), signal: ctl.signal});
+    return await res.json();
+  } catch (e) { return {ok: false, network: true, error: 'We could not reach Wonders. Please check your connection and try again.'}; }
+  finally { clearTimeout(timer); }
+}
+async function apiGet(params) {
+  if (!API_URL) return {ok: false, network: true, offline: true};
+  try { const res = await fetch(API_URL + '?' + new URLSearchParams(params).toString()); return await res.json(); }
+  catch (e) { return {ok: false, network: true}; }
+}
+function busy(btn, on, label) { btn.disabled = on; if (on) { btn.dataset.l = btn.textContent; btn.textContent = label || 'Sending…'; } else if (btn.dataset.l) btn.textContent = btn.dataset.l; }
+
+/* ===== Navigation ===== */
+function toggleMenu(force) {
+  const nav = $('#nav'), open = force === undefined ? !nav.classList.contains('open') : force;
+  nav.classList.toggle('open', open); $('#menubtn').setAttribute('aria-expanded', open); $('#menulabel').textContent = open ? '✕ Close' : '☰ Menu';
+}
+function go(v) {
+  toggleMenu(false);
+  if (v === 'give' && !keepCf && cf) clearCf();
+  if (v === 'give') keepCf = false;
+  $$('.view').forEach(e => e.classList.toggle('on', e.id === v));
+  $$('nav button').forEach(b => b.classList.toggle('on', b.dataset.v === v));
+  scrollTo(0, 0);
+  document.title = TITLES[v] ? TITLES[v] + ' | Wonders Foundation' : 'Wonders Foundation | No student walks alone';
+  if (v === 'crowdfunds') loadCrowdfunds();
+  if (v === 'announcements') { loadAnnouncements(); loadImpact(); loadWall(); loadStories(); if (CFG.latestAnnouncement) lsSet('wf_seen', CFG.latestAnnouncement); updateDot(); }
+}
+$$('nav button').forEach(b => b.onclick = () => go(b.dataset.v));
+function updateDot() { const on = !!CFG.latestAnnouncement && CFG.latestAnnouncement > lsGet('wf_seen'); $('#newdot').classList.toggle('show', on); $('#menudot').classList.toggle('show', on); }
+function notice(title, msg) { $('#notice_h').textContent = title; $('#notice_p').textContent = msg; go('notice'); }
+
+/* ===== Give ===== */
+const amts = [[5000,"A day of return shuttle for 12 students at the south gate"],[20000,"A small food restock for one student, or part payment towards school fees"],[100000,"60% of one student's school fees, or ₦10,000 pocket money for each of 10 students, or foodstuff for 5 students"],[1000000,"Full school fees for 11 students at 200 to 400 level, or foodstuff for 50 students at ₦20,000 each"]];
+let amount = 20000, freq = 'once', kind = 'cash', cf = null, last = {};
+$('#amts').append(...amts.map(([a, t]) => h('button', {'data-a': a, class: a === 20000 ? 'sel' : '', type: 'button'}, h('b', {}, naira(a)), h('small', {}, t))));
+function pickAmt(a, fromPreset) { amount = a; $$('#amts button').forEach(x => x.classList.toggle('sel', fromPreset && +x.dataset.a === a)); if (fromPreset) $('#other').value = ''; }
+$$('#amts button').forEach(b => b.onclick = () => pickAmt(+b.dataset.a, true));
+$('#other').oninput = e => { if (e.target.value) pickAmt(+e.target.value, false); };
+function setFreq(f) { freq = f; $$('#freq button').forEach(x => x.classList.toggle('sel', x.dataset.f === f)); $('#oftenbox').style.display = f === 'regular' ? 'block' : 'none'; }
+$$('#freq button').forEach(b => b.onclick = () => setFreq(b.dataset.f));
+$$('#kind button').forEach(b => b.onclick = () => { kind = b.dataset.k; $$('#kind button').forEach(x => x.classList.toggle('sel', x === b)); $('#cash').style.display = kind === 'cash' ? 'block' : 'none'; $('#inkind').style.display = kind === 'inkind' ? 'block' : 'none'; $('#paynote').style.display = kind === 'cash' ? 'block' : 'none'; });
+$('#g_anon').onchange = e => { $('#g_wall').disabled = e.target.checked; if (e.target.checked) $('#g_wall').checked = false; };
+let keepCf = false;
+function giveTo(c) { keepCf = true; cf = c; $('#cftitle').textContent = c.title; $('#cfnote').style.display = 'block'; $('#forbox').style.display = 'none'; kind = 'cash'; $$('#kind button')[0].click(); go('give'); }
+function clearCf() { cf = null; $('#cfnote').style.display = 'none'; $('#forbox').style.display = 'block'; }
+
+function giveMessage(o) {
+  const sc = school(o.school) || giveSchool();
+  let what;
+  if (o.cf) what = 'towards crowdfund ' + o.cf.id + ' (' + o.cf.title + ')';
+  else if (o.purpose === 'Where it is needed most') what = 'to the general fund, where it is needed most';
+  else what = 'towards ' + o.purpose.toLowerCase();
+  const often = {weekly: 'every week', monthly: 'every month', semester: 'every semester', session: 'every session', termly: 'every semester', yearly: 'every session'}[o.frequency] || 'once';
+  let t = 'Hello Wonders ' + sc.code + ', I’d like to give ' + naira(o.amount) + ' ' + what + ', ' + often + '.';
+  if (o.anonymous) t += ' I’d like to give anonymously.'; else if (o.name) t += ' My name is ' + o.name + '.';
+  t += o.ref ? ' My reference is ' + o.ref + '.' : '';
+  return t + ' Please send me the account details.';
+}
+
+async function giveNow() {
+  const err = $('#g_err'); err.textContent = '';
+  const inkind = kind === 'inkind', anon = $('#g_anon').checked;
+  const name = $('#g_name').value.trim(), email = $('#g_email').value.trim(), phone = $('#g_phone').value.trim();
+  if (!name) { err.textContent = 'Please add your name.'; return; }
+  if (!validEmail(email)) { err.textContent = 'Please add a valid email address.'; return; }
+  if (intl(phone).length < 10) { err.textContent = 'Please add your WhatsApp number.'; return; }
+  if (otherMissing('g_heard')) { err.textContent = 'Please tell us how you heard about Wonders.'; return; }
+  if (inkind && otherMissing('ik_item')) { err.textContent = 'Please tell us what you are giving.'; return; }
+  let p = {name, email, whatsapp: phone, anonymous: anon, wall: !anon && $('#g_wall').checked, school: CFG.defaultSchool, howHeard: selVal('g_heard'), notes: $('#g_notes').value.trim(), hp: $('#g_hp').value};
+  if (inkind) {
+    const item = selVal('ik_item'), qty = $('#ik_qty').value.trim(), desc = $('#ik_desc').value.trim(), loc = $('#ik_loc').value.trim();
+    if (!qty) { err.textContent = 'Please say how much or how many.'; return; }
+    if (!desc) { err.textContent = 'Please describe what you are giving.'; return; }
+    if (!loc) { err.textContent = 'Please add your exact location.'; return; }
+    Object.assign(p, {type: 'inkind', item, quantity: qty, description: desc, location: loc});
+  } else {
+    if (!(amount >= 100)) { err.textContent = 'Please choose or enter an amount of ₦100 or more.'; return; }
+    Object.assign(p, {type: 'cash', amount, purpose: cf ? 'A crowdfund' : $('#g_for').value, crowdfund: cf ? cf.id : '', frequency: freq === 'regular' ? $('#howoften').value : 'once'});
+  }
+  const btn = $('#g_btn'); busy(btn, true, 'Saving…');
+  const r = await api('pledge', p);
+  busy(btn, false);
+  if (!r.ok && !r.network) { err.textContent = r.error || 'Something went wrong. Please try again.'; return; }
+  last = {p, ref: r.ok ? r.ref : '', saved: !!r.ok, cf};
+  clearCf();
+  showThanks();
+}
+
+function showThanks() {
+  const {p, ref} = last, inkind = p.type === 'inkind';
+  const first = (!p.anonymous && p.name) ? p.name.split(/\s+/)[0] : '';
+  $('#thanksh').textContent = first ? 'Thank you, ' + first : 'Thank you';
+  $('#refcard').style.display = ref ? 'block' : 'none'; $('#gref').textContent = ref;
+  $('#refnote').textContent = 'It is in your WhatsApp message. Screenshot this to keep it.';
+  $('#wabox').style.display = 'flex';
+  $('#monthlycard').style.display = (!inkind && p.frequency === 'once') ? 'block' : 'none';
+  const sc = giveSchool();
+  if (inkind) {
+    $('#wabtn').textContent = 'Click here to message the coordinator on WhatsApp';
+    $('#wabtn').href = waUrl(sc.whatsapp, 'Hello Wonders ' + sc.code + ', I just pledged a gift in kind: ' + p.item + ', ' + p.quantity + '.' + (ref ? ' My reference is ' + ref + '.' : '') + (p.anonymous ? '' : ' My name is ' + p.name + '.') + ' Please guide me on what to do next.');
+    $('#tmsg').textContent = 'Your gift in kind is noted and will help a student directly.';
+  } else {
+    $('#wabtn').textContent = 'Click here to get the account details';
+    $('#wabtn').href = waUrl(sc.whatsapp, giveMessage({school: CFG.defaultSchool, amount: p.amount, purpose: p.purpose === 'A crowdfund' ? '' : p.purpose, cf: last.cf, frequency: p.frequency, anonymous: p.anonymous, name: p.name, ref}));
+    $('#tmsg').textContent = '';
+  }
+  $('#anonnote').textContent = p.anonymous ? 'You gave anonymously. Your name will not appear in any public list or report, and we keep your details privately only to match your gift and send your receipt.' : '';
+  go('thanks');
+}
+function makeRegular() { setFreq('regular'); go('give'); }
+
+const CARDS = {
+  give: {title: 'THE GIVING CONFESSION', text: 'I am a vessel, not the source; what I give is seed, and nothing given in faith is ever lost.', ref: 'Proverbs 11:25 · Luke 6:38', file: 'wonders-giving-confession.png'},
+  ask: {title: 'THE ASKING CONFESSION', text: 'Asking is not weakness, it is how a family works; my need is not my identity, my dream is.', ref: '', file: 'wonders-asking-confession.png'}
+};
+function cardBlob(kind) {
+  const cd = CARDS[kind] || CARDS.give;
+  const done = () => new Promise(res => {
+    const W = 1080, H = 1350, c = document.createElement('canvas'); c.width = W; c.height = H; const x = c.getContext('2d');
+    x.fillStyle = '#4A1A68'; x.fillRect(0, 0, W, H);
+    x.fillStyle = '#FFF8ED'; x.beginPath(); x.moveTo(90, 250); x.lineTo(90, 140); x.arc(140, 140, 50, Math.PI, 0); x.lineTo(190, 250); x.closePath(); x.fill();
+    x.fillStyle = '#E8A93B'; x.beginPath(); x.arc(140, 112, 7, 0, 7); x.fill();
+    x.fillStyle = '#4A1A68'; x.font = '700 38px Sora, sans-serif'; x.textAlign = 'center'; x.fillText('WF', 140, 228);
+    x.textAlign = 'left'; x.fillStyle = '#E8A93B'; x.font = '600 34px Sora, sans-serif'; x.fillText(cd.title, 90, 400);
+    x.fillStyle = '#FFF8ED'; x.font = '600 58px Sora, sans-serif';
+    let y = 500; const words = cd.text.split(' '); let line = '';
+    words.forEach(w => { const t = line ? line + ' ' + w : w; if (x.measureText(t).width > 900) { x.fillText(line, 90, y); y += 82; line = w; } else line = t; });
+    x.fillText(line, 90, y);
+    x.fillStyle = '#E8A93B'; x.font = '400 32px "DM Sans", sans-serif'; if (cd.ref) x.fillText(cd.ref, 90, y + 80);
+    x.fillStyle = '#FFF8ED'; x.font = '700 36px Sora, sans-serif'; x.fillText('Wonders Foundation', 90, H - 120);
+    x.fillStyle = '#EFE4F0'; x.font = '400 30px "DM Sans", sans-serif'; x.fillText('No student walks alone.', 90, H - 70);
+    c.toBlob(res, 'image/png');
+  });
+  return (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(done, done);
+}
+function saveBlob(b, name) { const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = name; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000); }
+function downloadCard(kind) { const cd = CARDS[kind] || CARDS.give; cardBlob(kind).then(b => saveBlob(b, cd.file)); }
+
+/* ===== Ask ===== */
+const needs = [["🍲","Food"],["🚌","Transport"],["📶","Data"],["📚","Manuals"],["👕","Clothing"],["🩺","Healthcare"],["🎓","School fees"],["🚨","Emergency"]];
+$('#needs').append(...needs.map(([i, n]) => h('div', {class: 'need'}, h('span', {'aria-hidden': 'true'}, i), n)));
+const NF = {'Data':[['Which network?','MTN, Airtel, Glo or 9mobile'],['Phone number to receive the data',''],['What do you need it for?','e.g. online classes']],'Transport':[['Where do you travel from?','Your hostel or area'],['Where do you travel to?','e.g. the north gate'],['How many days a week?','e.g. 5'],['How long do you need support for?','e.g. two weeks']],'A manual':[['Course code',''],['Manual title',''],['Price, if you know','In naira'],['Your class rep’s name',''],['Your class rep’s phone number','']],'Textbook(s)':[['Course code(s)',''],['Title and author of each book',''],['Would a used or borrowed copy work?','Yes or no'],['Your class rep’s name',''],['Your class rep’s phone number','']],'Clothing':[['What item(s) do you need?',''],['Size',''],['What is it for?','e.g. a lab coat']],'School fees':[['Your level and session','e.g. 300 level, 2025/2026'],['Balance still to pay, as on your school portal (naira)',''],['How much do you already have towards it? (naira)','Put 0 if nothing',1],['How much do you need Wonders to help with? (naira)','',1],['Does your school allow paying in instalments?','Yes, no or not sure'],['If yes: how much is due next, and by when?','e.g. ₦60,000 by 30 November'],['What will be blocked if you do not pay?','e.g. exams, registration, results'],['Are you getting other support for fees?','e.g. scholarship, bursary, family, none']],'Medical or healthcare':[['What do you need help with?','e.g. hospital bill'],['Name of the hospital or pharmacy',''],['How much is owed, in naira?','']],'Rent':[['How much is owed, in naira?',''],['How much do you already have towards it? (naira)','Put 0 if nothing',1],['How much do you need Wonders to help with? (naira)','',1],['When is it due?','e.g. 15 December'],['What happens if it is not paid?','e.g. a notice to leave'],['What makes this request exceptional?',''],['Have you spoken to your landlord?','Yes or no']],'Something else':[['What do you need, and why does it matter?','']]};
+const PROOFNEEDS = ['Textbook(s)','Clothing','Food for several weeks','School fees','Medical or healthcare','Rent'];
+const CROWD = ['School fees','Rent'];
+function foodFields(box, weeks) {
+  const star = () => h('span', {class: 'req'}, ' *');
+  const sel = h('select', {id: 'fh', 'data-q': 'How would you like help?', 'data-req': '1'}, h('option', {value: ''}, 'Choose one'), ...['Money to buy food', 'Foodstuff bought for me', 'Either is fine'].map(o => h('option', {}, o)));
+  const money = h('div', {style: 'display:none'},
+    h('label', {for: 'fm1'}, 'How much do you need for food? (naira) ', star()), h('input', {id: 'fm1', inputmode: 'numeric', 'data-q': 'Total needed for food (naira)', 'data-req': '1'}),
+    h('label', {for: 'fm2'}, 'How much of that do you already have? (naira) ', star()), h('input', {id: 'fm2', inputmode: 'numeric', 'data-q': 'Already have (naira)', 'data-req': '1', placeholder: 'Put 0 if nothing'}),
+    h('label', {for: 'fm3'}, 'How much do you need Wonders to help with? (naira) ', star()), h('input', {id: 'fm3', inputmode: 'numeric', 'data-q': 'Needed from Wonders (naira)', 'data-req': '1'}));
+  const stuff = h('div', {style: 'display:none'}, h('label', {for: 'fi'}, 'Foodstuff you need ', star()), h('textarea', {id: 'fi', rows: '2', 'data-q': 'Foodstuff needed', 'data-req': '1', placeholder: 'e.g. rice, beans, garri, oil, tomatoes'}),
+    h('label', {for: 'fl'}, 'Delivery location ', star()), h('input', {id: 'fl', 'data-q': 'Delivery location', 'data-req': '1', placeholder: 'Your hostel, room or area'}));
+  sel.onchange = () => { const v = sel.value; money.style.display = v === 'Money to buy food' || v === 'Either is fine' ? 'block' : 'none'; stuff.style.display = v === 'Foodstuff bought for me' || v === 'Either is fine' ? 'block' : 'none'; };
+  box.append(h('label', {for: 'fh'}, 'How would you like help? ', star()), sel, money, stuff);
+  if (weeks) box.append(h('label', {for: 'fw'}, 'How many weeks?'), h('input', {id: 'fw', 'data-q': 'How many weeks?', placeholder: 'e.g. 3'}));
+}
+function renderNeed() {
+  const v = $('#a_need').value, box = $('#a_fields'); box.replaceChildren();
+  if (v === 'A meal or food for a few days') foodFields(box, false);
+  if (v === 'Food for several weeks') foodFields(box, true);
+  (NF[v] || []).forEach(([l, ph, rq], i) => { const id = 'nf' + i; box.append(h('label', {for: id}, l, rq ? h('span', {class: 'req'}, ' *') : ''), h('input', {id, 'data-q': l, 'data-req': rq ? '1' : null, inputmode: rq ? 'numeric' : null, placeholder: ph})); });
+  if (CROWD.includes(v)) box.append(h('div', {class: 'card', style: 'border:2px solid var(--cplum);margin-top:12px'}, h('b', {}, 'How this works for now'), h('br'), 'Your Ask is read like any other. If the amount is very large or the pool is running low, a coordinator may suggest a crowdfund. A crowdfund is shared with donors, so you decide what is shown, and nothing goes public without your agreement.'));
+  if (PROOFNEEDS.includes(v)) box.append(h('p', {class: 'note'}, 'For this need, a coordinator will message you on WhatsApp with a secure link to send proof.'));
+}
+function buildSchools() {
+  const sel = $('#a_school'), keep = sel.value; sel.replaceChildren();
+  CFG.schools.forEach(s => sel.append(h('option', {value: s.code, disabled: s.status !== 'Active' ? '' : null}, s.name)));
+  if (keep && school(keep) && school(keep).status === 'Active') sel.value = keep; else sel.value = (CFG.schools.find(s => s.status === 'Active') || {}).code;
+  const ts = $('#t_school'); ts.replaceChildren(); CFG.schools.filter(s => s.status === 'Active' && s.code !== 'OTHER').forEach(s => ts.append(h('option', {value: s.code}, s.name)));
+  ts.append(h('option', {value: ''}, 'Another school'));
+  schoolChanged();
+}
+function schoolChanged() {
+  const s = school($('#a_school').value) || {};
+  $('#emno').textContent = s.whatsapp || '09134450648';
+  $('#a_other_box').style.display = s.code === 'OTHER' ? 'block' : 'none';
+  $('#cap').style.display = s.capacityFull ? 'block' : 'none';
+}
+let crowdReq = false;
+function requestCrowdfund() { $('#askdone').style.display = 'none'; $('#askform').style.display = 'block'; crowdReq = true; $('#cfreq').style.display = 'block'; go('ask'); setTimeout(() => $('#formbox').scrollIntoView({behavior: 'smooth'}), 60); }
+function cancelCfReq() { crowdReq = false; $('#cfreq').style.display = 'none'; }
+async function sendAsk() {
+  const err = $('#a_err'); err.textContent = '';
+  const code = $('#a_school').value, name = $('#a_name').value.trim(), wa = $('#a_wa').value.trim(), email = $('#a_email').value.trim().toLowerCase(), need = $('#a_need').value;
+  if (!name) { err.textContent = 'Please tell us what to call you.'; return; }
+  if (intl(wa).length < 10) { err.textContent = 'Please add your WhatsApp number.'; return; }
+  if (!validEmail(email)) { err.textContent = 'Please add a valid email address.'; return; }
+  if (!code) { err.textContent = 'Please choose your school.'; return; }
+  if (code === 'OTHER' && !$('#a_other').value.trim()) { err.textContent = 'Please write your school.'; return; }
+  if (!need) { err.textContent = 'Please choose what you need.'; return; }
+  if (otherMissing('a_heard')) { err.textContent = 'Please tell us how you heard about Wonders.'; return; }
+  const miss = $$('#a_fields [data-req]').find(i => i.offsetParent !== null && !i.value.trim());
+  if (miss) { err.textContent = 'Please fill in: ' + miss.dataset.q; miss.focus(); return; }
+  if (!$('#a_c1').checked || !$('#a_c2').checked) { err.textContent = 'Please tick both confirmations.'; return; }
+  const details = $$('#a_fields [data-q]').filter(i => i.offsetParent !== null).map(i => ({q: i.dataset.q, a: i.value.trim()}));
+  if (code === 'OTHER') details.unshift({q: 'Which school', a: $('#a_other').value.trim()});
+  const btn = $('#a_btn'); busy(btn, true);
+  const r = await api('ask', {school: code, name, whatsapp: wa, email, level: $('#a_level').value, need, details, story: $('#a_story').value, howHeard: selVal('a_heard'), crowdfundRequest: crowdReq, consent1: true, consent2: true, hp: $('#a_hp').value});
+  busy(btn, false);
+  if (!r.ok) { err.textContent = (r.offline ? 'Asks cannot be sent from this page yet. ' : (r.error || 'Something went wrong. ')) + (r.network || !r.error ? 'You can also WhatsApp ' + ($('#emno').textContent) + '.' : ''); return; }
+  $('#ref').textContent = r.ref; $('#chk_ref').value = r.ref;
+  const s = school(code) || {}; const num = r.emergency || s.whatsapp || '09134450648';
+  $('#emno2').textContent = num; $('#tgdone').href = s.telegram || 'https://t.me/WondersFoundation';
+  $('#cfnext').style.display = r.crowdfund ? 'block' : 'none';
+  $('#cfnextbtn').onclick = () => { $('#c_ref').value = r.ref; go('crowd'); };
+  cancelCfReq();
+  $('#askform').style.display = 'none'; $('#askdone').style.display = 'block'; scrollTo(0, 0);
+}
+function resetAsk() { $('#askdone').style.display = 'none'; $('#askform').style.display = 'block'; ['#a_story', '#a_need'].forEach(s => $(s).value = ''); $('#a_c1').checked = $('#a_c2').checked = false; cancelCfReq(); renderNeed(); scrollTo(0, 0); }
+async function checkAsk() {
+  const ref = $('#chk_ref').value.trim().toUpperCase(), out = $('#chk_out'); out.replaceChildren();
+  if (!/^WF-[A-Z0-9]{4}-\d{2}$/.test(ref)) { out.append(h('p', {class: 'err'}, 'Please enter your reference, like WF-AB3K-01.')); return; }
+  const btn = $('#chk_btn'); busy(btn, true, 'Checking…');
+  const r = await apiGet({action: 'status', ref}); busy(btn, false);
+  if (!r.ok) { out.append(h('p', {class: 'err'}, r.offline ? 'Checking is not available yet.' : (r.error || 'We could not check right now. Please try again.'))); return; }
+  if (!r.found) { out.append(h('p', {}, 'We could not find that reference. Please check it and try again.')); return; }
+  out.append(h('div', {class: 'card', style: 'margin-top:8px'}, h('b', {}, r.label), h('p', {}, r.message)));
+  if (r.crowdfund) out.append(h('div', {class: 'row'}, h('button', {class: 'btn', onclick: () => { $('#c_ref').value = ref; go('crowd'); }}, 'Add my crowdfund details')));
+}
+
+/* ===== Crowdfund form and list ===== */
+async function crowdSend() {
+  const err = $('#c_err'); err.textContent = '';
+  const ref = $('#c_ref').value.trim().toUpperCase();
+  if (!ref || $('#c_story').value.trim().length < 20 || !($('#c_amt').value > 0)) { err.textContent = 'Please add your reference, your story and the amount needed.'; return; }
+  if (!$('#c_ok').checked) { err.textContent = 'Please tick the confirmation so we know you agree.'; return; }
+  const btn = $('#c_btn'); busy(btn, true);
+  const r = await api('crowdfund', {ref, story: $('#c_story').value, amount: $('#c_amt').value, deadline: $('#c_deadline').value, department: $('#c_dept').value, showName: $('#c_name').checked, showPhoto: $('#c_photo').checked, showLevel: $('#c_level').checked, showSchool: $('#c_school').checked, consent: true, hp: $('#c_hp').value});
+  busy(btn, false);
+  if (!r.ok) { err.textContent = r.offline ? 'This page is not connected yet.' : (r.error || 'Something went wrong. Please try again.'); return; }
+  $('#crowddone').style.display = 'block'; $('#crowddone').scrollIntoView({behavior: 'smooth'});
+}
+async function loadCrowdfunds() {
+  const box = $('#cf_list'); const r = await apiGet({action: 'crowdfunds'}); box.replaceChildren();
+  if (!r.ok || !r.items.length) { box.append(h('div', {class: 'card'}, r.offline || r.network ? 'Crowdfunds will show here when they open.' : 'No crowdfunds are open right now.')); return; }
+  r.items.forEach(c => {
+    const pct = c.raised > 0 ? Math.max(3, Math.min(100, Math.round(c.raised / (c.needed || c.raised) * 100))) : 0;
+    const meta = [c.firstName, c.level && ('Level ' + c.level), c.department, c.school].filter(Boolean).join(' · ');
+    const link = siteUrl() + '?cf=' + encodeURIComponent(c.id);
+    box.append(h('div', {class: 'card', id: 'cf-' + c.id},
+      h('h3', {}, c.title), meta ? h('p', {class: 'note'}, meta) : '',
+      h('p', {style: 'white-space:pre-wrap'}, c.story),
+      h('div', {class: 'bar'}, h('div', {style: 'width:' + pct + '%'})),
+      h('p', {class: 'note'}, naira(c.raised) + ' raised' + (c.needed ? ' of ' + naira(c.needed) : '') + (c.deadline ? ' · by ' + c.deadline : '')),
+      h('div', {class: 'row'}, h('button', {class: 'btn', onclick: () => giveTo({id: c.id, title: c.title})}, 'Give to this crowdfund'),
+        h('button', {class: 'btn out', onclick: () => openShare({text: 'Come through for a student: ' + link, url: link, file: 'wonders-crowdfund.png', blob: () => makeFlier({l1: c.firstName ? 'Help ' + c.firstName + '.' : 'Help a student.', l2: c.title, body: 'A crowdfund checked by Wonders Foundation. Every gift counts.', qr: link, qrTitle: 'Scan to give', qrNote: 'It opens this crowdfund on the Wonders Foundation site.', bar: {raised: c.raised, needed: c.needed}})})}, 'Share on your status or story so others can donate'))));
+  });
+  const want = new URLSearchParams(location.search).get('cf'); const el = want && document.getElementById('cf-' + want);
+  if (el) el.scrollIntoView({behavior: 'smooth'});
+}
+
+/* ===== Partners, school requests, stories ===== */
+async function simpleSend(action, payload, btn, errEl, okEl, okText, after) {
+  errEl.textContent = ''; okEl.textContent = ''; busy(btn, true);
+  const r = await api(action, payload); busy(btn, false);
+  if (!r.ok) { errEl.textContent = r.offline ? 'This form is not connected yet.' : (r.error || 'Something went wrong. Please try again.'); return; }
+  okEl.textContent = okText; if (after) after();
+}
+function partnerWants() { $('#p_ik').style.display = $('#p_wants').value === 'Give in kind regularly' ? 'block' : 'none'; }
+function partnerSend() {
+  const name = $('#p_name').value.trim(), contact = $('#p_contact').value.trim(), email = $('#p_email').value.trim(), err = $('#p_err');
+  const ik = $('#p_wants').value === 'Give in kind regularly';
+  const item = $('#p_item').value.trim(), qty = $('#p_qty').value.trim(), desc = $('#p_desc').value.trim(), loc = $('#p_loc').value.trim();
+  err.textContent = ''; $('#p_wa').style.display = 'none';
+  if (!name) { err.textContent = 'Please add your name or organisation.'; return; }
+  if (!validEmail(email)) { err.textContent = 'Please add a valid email address.'; return; }
+  if (ik && (!item || !qty || !desc || !loc)) { err.textContent = 'Please say what you will give, how much, describe it, and add your exact location.'; return; }
+  const sc = giveSchool();
+  simpleSend('partner', {name, type: $('#p_type').value, wants: $('#p_wants').value, item: ik ? item : '', quantity: ik ? qty : '', description: ik ? desc : '', location: ik ? loc : '', contact, email, hp: $('#p_hp').value}, $('#p_btn'), err, $('#p_ok'), ik ? 'Thank you. Now message the coordinator on WhatsApp so they can take it from here.' : 'Thank you. A coordinator will reach out to you.',
+    () => { if (ik) { $('#p_wabtn').href = waUrl(sc.whatsapp, 'Hello Wonders ' + sc.code + ', I just submitted a partnership to give in kind regularly: ' + item + ', ' + qty + '. My name is ' + name + '. Please guide me on what to do next.'); $('#p_wa').style.display = 'flex'; } });
+}
+function schoolReqSend() {
+  const school = $('#s_school').value.trim(), name = $('#s_name').value.trim(), contact = $('#s_contact').value.trim();
+  if (!school || !name || !contact) { $('#s_err').textContent = 'Please add the school, your name and a way to reach you.'; return; }
+  if (otherMissing('s_role')) { $('#s_err').textContent = 'Please tell us who you are.'; return; }
+  simpleSend('school_request', {school, name, role: selVal('s_role'), contact, note: $('#s_note').value, hp: $('#s_hp').value}, $('#s_btn'), $('#s_err'), $('#s_ok'), 'Thank you. We have noted your school.');
+}
+function testimonialSend() {
+  if ($('#t_msg').value.trim().length < 10) { $('#t_err').textContent = 'Please write a little more.'; return; }
+  if (!$('#t_perm').checked) { $('#t_err').textContent = 'Please tick the permission box.'; return; }
+  simpleSend('testimonial', {message: $('#t_msg').value, name: $('#t_name').value, school: $('#t_school').value || $('#t_other').value.trim(), permission: true, showName: $('#t_show').checked, hp: $('#t_hp').value}, $('#t_btn'), $('#t_err'), $('#t_ok'), 'Thank you. We will read it, and nothing is shown without your permission.', () => { $('#t_msg').value = ''; });
+}
+async function loadStories() {
+  const box = $('#stories'); const r = await apiGet({action: 'testimonials'}); box.replaceChildren();
+  if (!r.ok || !r.items.length) { box.append(h('p', {class: 'note'}, 'Stories from Wonders will appear here.')); return; }
+  r.items.forEach(t => box.append(h('div', {class: 'quote'}, '“' + t.message + '”', h('br'), h('small', {}, t.name + (t.school ? ' · ' + t.school : '')))));
+}
+
+/* ===== Announcements, impact, wall ===== */
+let annAud = 'FUTA';
+$$('#annaud button').forEach(b => b.onclick = () => { annAud = b.dataset.a; $$('#annaud button').forEach(x => x.classList.toggle('sel', x === b)); loadAnnouncements(); });
+function fmtDate(s) { const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(s || ''); return m ? new Date(+m[1], +m[2] - 1, +m[3]).toLocaleDateString('en-GB', {day: 'numeric', month: 'short', year: 'numeric'}) : ''; }
+async function loadAnnouncements() {
+  const box = $('#ann_list'); const r = await apiGet({action: 'announcements', audience: annAud === 'FUTA' ? 'FUTA' : ''}); box.replaceChildren();
+  if (!r.ok || !r.items.length) { box.append(h('div', {class: 'card'}, 'No announcements yet.')); return; }
+  r.items.forEach(a => {
+    const url = a.link ? safeUrl(a.link) : '';
+    box.append(h('div', {class: 'card', style: 'margin-bottom:12px'}, a.pinned ? h('div', {class: 'pin'}, 'Pinned') : '', h('h3', {}, a.title), h('p', {class: 'note'}, fmtDate(a.date)), h('p', {style: 'white-space:pre-wrap'}, a.message), url ? h('a', {href: url, target: '_blank', rel: 'noopener'}, 'Open link') : ''));
+  });
+}
+function subscribeSend() {
+  const email = $('#n_email').value.trim();
+  if (!validEmail(email)) { $('#n_err').textContent = 'Please check your email address.'; return; }
+  simpleSend('subscribe', {email, audience: $('#n_aud').value, hp: $('#n_hp').value}, $('#n_btn'), $('#n_err'), $('#n_ok'), 'You are subscribed. Please check your email.');
+}
+let annTab = 'ann';
+function showAnnTab(t) {
+  annTab = t;
+  $$('#anntabs button').forEach(b => b.classList.toggle('on', b.dataset.t === t));
+  $$('.tabpane').forEach(e => e.style.display = e.id === 'tab_' + t ? 'block' : 'none');
+}
+$$('#anntabs button').forEach(b => b.onclick = () => showAnnTab(b.dataset.t));
+let impactRows = [];
+$$('#impseg button').forEach(b => b.onclick = () => { $$('#impseg button').forEach(x => x.classList.toggle('sel', x === b)); drawImpact(+b.dataset.i); });
+function drawImpact(i) {
+  const r = impactRows[i]; const box = $('#impact'); box.replaceChildren(); if (!r) return;
+  const stats = [['Students supported', r['Students supported']], ['Asks met', r['Asks met']], ['Asks received', r['Asks received']], ['Gifts received', naira(r['Gifts received (NGN)'])], ['Paid out', naira(r['Paid out (NGN)'])], ['In-kind gifts', r['In-kind gifts received']], ['School-fee cases completed', r['School-fee cases completed']]];
+  if (i === 0 && r['Check-ins answered'] > 0) stats.push(['Said the help kept them in class', r['Check-ins: kept me in class'] + ' of ' + r['Check-ins answered']]);
+  stats.forEach(([l, v]) => box.append(h('div', {class: 'card stat'}, h('b', {}, v == null || v === '' ? '0' : v), l)));
+}
+async function loadImpact() {
+  const r = await apiGet({action: 'impact'});
+  if (!r.ok || r.hidden || !r.rows || !r.rows.length) { $('#tabbtn_impact').style.display = 'none'; if (annTab === 'impact') showAnnTab('ann'); return; }
+  $('#tabbtn_impact').style.display = '';
+  impactRows = [r.rows[0], r.rows[1]]; drawImpact(+($('#impseg .sel') || {dataset: {i: 0}}).dataset.i);
+}
+async function loadWall() {
+  const r = await apiGet({action: 'wall'}); const box = $('#wall'); box.replaceChildren();
+  const note = $('#wall_note');
+  if (!r.ok || !r.names || !r.names.length) { note.textContent = 'Names will appear here as people come through and choose to be named.'; return; }
+  note.textContent = 'Thank you to everyone who came through and chose to be named.'; r.names.forEach(n => box.append(h('span', {}, n)));
+}
+
+/* ===== Start up ===== */
+/* Minimal QR encoder: byte mode, error level M, versions 1-10 */
+function wfQR(text) {
+  const bytes = Array.from(new TextEncoder().encode(text));
+  const BL = [null,[1,16,10],[1,28,16],[1,44,26],[2,32,18],[2,43,24],[4,27,16],[4,31,18],[[2,38],[2,39],22],[[3,36],[2,37],22],[[4,43],[1,44],26]];
+  const AL = [null,[],[6,18],[6,22],[6,26],[6,30],[6,34],[6,22,38],[6,24,42],[6,26,46],[6,28,50]];
+  const blocksOf = v => { const b = BL[v]; if (Array.isArray(b[0])) { const r = []; b.slice(0, 2).forEach(([n, d]) => { for (let i = 0; i < n; i++) r.push(d); }); return {d: r, ec: b[2]}; } const r = []; for (let i = 0; i < b[0]; i++) r.push(b[1]); return {d: r, ec: b[2]}; };
+  let ver = 0; for (let v = 1; v <= 10; v++) { const cap = blocksOf(v).d.reduce((a, b) => a + b, 0); if (bytes.length + (v < 10 ? 2 : 3) <= cap) { ver = v; break; } }
+  if (!ver) return null;
+  const {d: dl, ec} = blocksOf(ver), total = dl.reduce((a, b) => a + b, 0);
+  let bits = []; const put = (n, len) => { for (let i = len - 1; i >= 0; i--) bits.push((n >> i) & 1); };
+  put(4, 4); put(bytes.length, ver < 10 ? 8 : 16); bytes.forEach(b => put(b, 8));
+  put(0, Math.min(4, total * 8 - bits.length)); while (bits.length % 8) bits.push(0);
+  const data = []; for (let i = 0; i < bits.length; i += 8) data.push(parseInt(bits.slice(i, i + 8).join(''), 2));
+  for (let p = 0; data.length < total; p++) data.push(p % 2 ? 17 : 236);
+  const exp = [], log = []; for (let i = 0, v = 1; i < 255; i++) { exp[i] = v; log[v] = i; v <<= 1; if (v & 256) v ^= 285; } for (let i = 255; i < 512; i++) exp[i] = exp[i - 255];
+  const mul = (a, b) => a && b ? exp[log[a] + log[b]] : 0;
+  let gen = [1]; for (let i = 0; i < ec; i++) { const n = new Array(gen.length + 1).fill(0); gen.forEach((g, j) => { n[j] ^= g; n[j + 1] ^= mul(g, exp[i]); }); gen = n; }
+  const rs = d => { const r = d.concat(new Array(ec).fill(0)); for (let i = 0; i < d.length; i++) { const c = r[i]; if (c) for (let j = 0; j < gen.length; j++) r[i + j] ^= mul(gen[j], c); } return r.slice(d.length); };
+  let pos = 0; const D = [], E = []; dl.forEach(n => { const b = data.slice(pos, pos + n); pos += n; D.push(b); E.push(rs(b)); });
+  const out = []; for (let i = 0; i < Math.max(...dl); i++) D.forEach(b => { if (i < b.length) out.push(b[i]); }); for (let i = 0; i < ec; i++) E.forEach(b => out.push(b[i]));
+  const N = 17 + ver * 4, M = Array.from({length: N}, () => new Array(N).fill(null)), F = Array.from({length: N}, () => new Array(N).fill(false));
+  const set = (r, c, v) => { M[r][c] = v; F[r][c] = true; };
+  const finder = (r, c) => { for (let i = -1; i <= 7; i++) for (let j = -1; j <= 7; j++) { const rr = r + i, cc = c + j; if (rr < 0 || cc < 0 || rr >= N || cc >= N) continue; set(rr, cc, (i >= 0 && i <= 6 && (j === 0 || j === 6)) || (j >= 0 && j <= 6 && (i === 0 || i === 6)) || (i >= 2 && i <= 4 && j >= 2 && j <= 4)); } };
+  finder(0, 0); finder(0, N - 7); finder(N - 7, 0);
+  for (let i = 8; i < N - 8; i++) { set(6, i, i % 2 === 0); set(i, 6, i % 2 === 0); }
+  const ap = AL[ver]; const lastP = ap[ap.length - 1]; ap.forEach(r => ap.forEach(c => { if ((r === 6 && c === 6) || (r === 6 && c === lastP) || (r === lastP && c === 6)) return; for (let i = -2; i <= 2; i++) for (let j = -2; j <= 2; j++) set(r + i, c + j, Math.max(Math.abs(i), Math.abs(j)) !== 1); }));
+  set(N - 8, 8, true);
+  for (let i = 0; i < 9; i++) { if (!F[8][i]) set(8, i, false); if (!F[i][8]) set(i, 8, false); }
+  for (let i = 0; i < 8; i++) { if (!F[8][N - 1 - i]) set(8, N - 1 - i, false); if (!F[N - 1 - i][8]) set(N - 1 - i, 8, false); }
+  if (ver >= 7) { let v = ver << 12, g = 0x1F25; for (let i = 17; i >= 12; i--) if ((v >> i) & 1) v ^= g << (i - 12); const vi = (ver << 12) | v; for (let i = 0; i < 18; i++) { const b = ((vi >> i) & 1) === 1, a = Math.floor(i / 3), c = i % 3 + N - 11; set(a, c, b); set(c, a, b); } }
+  const fb = []; for (let i = 0; i < out.length * 8; i++) fb.push((out[i >> 3] >> (7 - (i & 7))) & 1);
+  const mk = [(r, c) => (r + c) % 2 === 0, r => r % 2 === 0, (r, c) => c % 3 === 0, (r, c) => (r + c) % 3 === 0, (r, c) => (Math.floor(r / 2) + Math.floor(c / 3)) % 2 === 0, (r, c) => (r * c) % 2 + (r * c) % 3 === 0, (r, c) => ((r * c) % 2 + (r * c) % 3) % 2 === 0, (r, c) => ((r + c) % 2 + (r * c) % 3) % 2 === 0];
+  const build = m => {
+    const G = M.map(r => r.slice()); let k = 0, up = true;
+    for (let c = N - 1; c > 0; c -= 2) { if (c === 6) c--; for (let t = 0; t < N; t++) { const r = up ? N - 1 - t : t; for (let d = 0; d < 2; d++) { const cc = c - d; if (F[r][cc]) continue; const bit = k < fb.length ? fb[k] : 0; k++; G[r][cc] = (bit ^ (mk[m](r, cc) ? 1 : 0)) === 1; } } up = !up; }
+    let f = (0 << 3 | m) << 10, g = 0x537; for (let i = 14; i >= 10; i--) if ((f >> i) & 1) f ^= g << (i - 10); f = (((0 << 3 | m) << 10) | f) ^ 0x5412;
+    const fbit = i => ((f >> i) & 1) === 1;
+    for (let i = 0; i <= 5; i++) G[i][8] = fbit(i); G[7][8] = fbit(6); G[8][8] = fbit(7); G[8][7] = fbit(8); for (let i = 9; i < 15; i++) G[8][14 - i] = fbit(i);
+    for (let i = 0; i < 8; i++) G[8][N - 1 - i] = fbit(i); for (let i = 8; i < 15; i++) G[N - 15 + i][8] = fbit(i); G[N - 8][8] = true;
+    return G;
+  };
+  const pen = G => { let p = 0; for (let a = 0; a < 2; a++) for (let i = 0; i < N; i++) { let run = 1; for (let j = 1; j < N; j++) { const x = a ? G[j][i] : G[i][j], y = a ? G[j - 1][i] : G[i][j - 1]; if (x === y) { run++; if (run === 5) p += 3; else if (run > 5) p++; } else run = 1; } } for (let r = 0; r < N - 1; r++) for (let c = 0; c < N - 1; c++) if (G[r][c] === G[r][c + 1] && G[r][c] === G[r + 1][c] && G[r][c] === G[r + 1][c + 1]) p += 3; let dark = 0; G.forEach(r => r.forEach(v => { if (v) dark++; })); p += Math.floor(Math.abs(dark * 100 / (N * N) - 50) / 5) * 10; return p; };
+  let best = null, bp = 1e9; for (let m = 0; m < 8; m++) { const G = build(m), p = pen(G); if (p < bp) { bp = p; best = G; } }
+  return best;
+}
+
+function askLink() { return waUrl(giveSchool().whatsapp, 'Hello Wonders, I want to give. Please send me the account details.'); }
+function shareCaption() { return 'Wonders Foundation helps students with food, transport, manuals, healthcare and school fees. No student walks alone. Want to help? Message us for the account details: ' + askLink() + '\n\nLearn more: ' + siteUrl(); }
+function shareMsg(t) { $$('.sharemsg').forEach(e => e.textContent = t); }
+async function copyText(t) {
+  try { await navigator.clipboard.writeText(t); return true; } catch (e) {}
+  const a = document.createElement('textarea'); a.value = t; a.style.position = 'fixed'; a.style.opacity = '0'; document.body.append(a); a.select();
+  let ok = false; try { ok = document.execCommand('copy'); } catch (e) {} a.remove(); return ok;
+}
+async function copyGiveLink() { shareMsg(await copyText(askLink()) ? 'Link copied. It opens WhatsApp so people can ask for the account details.' : 'Could not copy. Please try again.'); }
+function makeFlier(o) {
+  o = o || {};
+  return (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).catch(() => {}).then(() => new Promise(res => {
+    const W = 1080, H = 1350, c = document.createElement('canvas'); c.width = W; c.height = H; const x = c.getContext('2d');
+    const wrap = (t, X, Y, mw, lh) => { let line = ''; t.split(' ').forEach(w => { const n = line ? line + ' ' + w : w; if (x.measureText(n).width > mw) { x.fillText(line, X, Y); Y += lh; line = w; } else line = n; }); x.fillText(line, X, Y); return Y + lh; };
+    x.fillStyle = '#4A1A68'; x.fillRect(0, 0, W, H);
+    x.fillStyle = '#FFF8ED'; x.beginPath(); x.moveTo(90, 220); x.lineTo(90, 130); x.arc(135, 130, 45, Math.PI, 0); x.lineTo(180, 220); x.closePath(); x.fill();
+    x.fillStyle = '#E8A93B'; x.beginPath(); x.arc(135, 105, 6, 0, 7); x.fill();
+    x.fillStyle = '#4A1A68'; x.font = '700 32px Sora, sans-serif'; x.textAlign = 'center'; x.fillText('WF', 135, 200);
+    x.textAlign = 'left'; x.fillStyle = '#FFF8ED'; x.font = '700 40px Sora, sans-serif'; x.fillText('Wonders Foundation', 210, 190);
+    x.fillStyle = '#E8A93B'; x.font = '700 76px Sora, sans-serif'; let y = wrap(o.l1 || 'Help a student.', 90, 390, 900, 92);
+    x.fillStyle = '#FFF8ED'; y = wrap(o.l2 || 'No student walks alone.', 90, y, 900, 92);
+    x.fillStyle = '#EFE4F0'; x.font = '400 38px "DM Sans", sans-serif'; y = wrap(o.body || 'Food, transport, manuals, healthcare and school fees support for students. Give today and help us come through for them.', 90, y + 20, 900, 54);
+    if (o.bar) {
+      const pct = o.bar.raised > 0 ? Math.max(0.03, Math.min(1, o.bar.raised / (o.bar.needed || o.bar.raised))) : 0;
+      x.fillStyle = '#6B3A8A'; x.fillRect(90, y + 10, 900, 24); x.fillStyle = '#E8A93B'; if (pct) x.fillRect(90, y + 10, 900 * pct, 24);
+      x.fillStyle = '#FFF8ED'; x.font = '600 34px "DM Sans", sans-serif'; x.fillText(naira(o.bar.raised) + ' raised' + (o.bar.needed ? ' of ' + naira(o.bar.needed) : ''), 90, y + 82);
+    }
+    const g = wfQR(o.qr || askLink()), qn = g ? g.length : 21, qs = Math.max(4, Math.floor(400 / (qn + 4))), box = (qn + 4) * qs;
+    const bx = 90, by = H - 130 - box;
+    if (g) {
+      x.fillStyle = '#FFFFFF'; x.beginPath(); x.roundRect ? x.roundRect(bx, by, box, box, 24) : x.rect(bx, by, box, box); x.fill();
+      x.fillStyle = '#000000'; for (let r = 0; r < qn; r++) for (let cc = 0; cc < qn; cc++) if (g[r][cc]) x.fillRect(bx + (cc + 2) * qs, by + (r + 2) * qs, qs, qs);
+    }
+    const tx = bx + box + 50; x.fillStyle = '#E8A93B'; x.font = '700 56px Sora, sans-serif'; x.fillText(o.qrTitle || 'Scan to give', tx, by + 90);
+    x.fillStyle = '#FFF8ED'; x.font = '400 32px "DM Sans", sans-serif'; wrap(o.qrNote || 'It opens WhatsApp, where our coordinator sends you the account details.', tx, by + 150, W - tx - 70, 46);
+    x.fillStyle = '#FFF8ED'; x.font = '700 30px Sora, sans-serif'; x.fillText('God provides, we show up.', 90, H - 70);
+    c.toBlob(res, 'image/png');
+  }));
+}
+function updateScrollBtns() {
+  const y = window.scrollY, max = document.documentElement.scrollHeight - window.innerHeight;
+  $('#sbtop').classList.toggle('off', y < 80); $('#sbbottom').classList.toggle('off', max - y < 80);
+}
+addEventListener('scroll', updateScrollBtns, {passive: true}); addEventListener('resize', updateScrollBtns); setInterval(updateScrollBtns, 800);
+const IS_MOBILE = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+const enc = encodeURIComponent;
+const PLATS = [
+  {name: 'WhatsApp', opts: [{l: 'Status', save: 1, app: 'whatsapp://', web: 'https://web.whatsapp.com/'}, {l: 'Chat or group', url: c => 'https://wa.me/?text=' + enc(c.text)}]},
+  {name: 'Instagram', opts: [{l: 'Story', save: 1, app: 'instagram://story-camera', web: 'https://www.instagram.com/'}, {l: 'Post', save: 1, app: 'instagram://', web: 'https://www.instagram.com/'}, {l: 'Message', app: 'instagram://', web: 'https://www.instagram.com/direct/inbox/'}]},
+  {name: 'Facebook', opts: [{l: 'Story', save: 1, app: 'fb://', web: 'https://www.facebook.com/'}, {l: 'Post', save: 1, url: c => 'https://www.facebook.com/sharer/sharer.php?u=' + enc(c.url)}]},
+  {name: 'TikTok', opts: [{l: 'Story or post', save: 1, web: 'https://www.tiktok.com/'}]},
+  {name: 'X', opts: [{l: 'Post', save: 1, url: c => 'https://twitter.com/intent/tweet?text=' + enc(c.text)}]},
+  {name: 'Telegram', opts: [{l: 'Story', save: 1, app: 'tg://', web: 'https://web.telegram.org/'}, {l: 'Chat or group', url: c => 'https://t.me/share/url?url=' + enc(c.url) + '&text=' + enc(c.text)}]},
+  {name: 'Snapchat', opts: [{l: 'Story', save: 1, app: 'snapchat://', web: 'https://www.snapchat.com/'}]}
+];
+let shareCtx = null, shareBlob = null;
+function shStep(n) { $('#shstep1').style.display = n === 1 ? 'block' : 'none'; $('#shstep2').style.display = n === 2 ? 'block' : 'none'; if (n === 1) $('#shnote').replaceChildren(); }
+function openShare(o) {
+  shareCtx = o; shareBlob = null; shStep(1);
+  $('#shmodal').style.display = 'flex'; document.body.style.overflow = 'hidden';
+  $('#shnativebox').style.display = 'none'; $('#shchoose').style.display = 'block';
+  const showNative = () => { if (!navigator.share) return; $('#shnativebox').style.display = 'block'; $('#shchoose').style.display = 'none'; };
+  if (o.blob) o.blob().then(b => { shareBlob = b; const f = new File([b], 'a.png', {type: 'image/png'}); if (navigator.canShare && navigator.canShare({files: [f]})) showNative(); }).catch(() => {});
+  else showNative();
+  $('#shmodal .x').focus();
+}
+function closeShare() { $('#shmodal').style.display = 'none'; document.body.style.overflow = ''; }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeShare(); });
+(function () {
+  const box = $('#plats');
+  PLATS.forEach(p => box.append(h('button', {class: 'btn out', onclick: () => shPick(p)}, p.name)));
+})();
+function shPick(p) {
+  if (p.opts.length === 1) { shRun(p, p.opts[0]); return; }
+  $('#shplat').textContent = 'Share on ' + p.name; const box = $('#shopts'); box.replaceChildren();
+  p.opts.forEach(o => box.append(h('button', {class: 'btn out', onclick: () => shRun(p, o)}, o.l)));
+  $('#shnote').replaceChildren(); shStep(2);
+}
+async function shRun(p, o) {
+  const c = shareCtx, note = $('#shnote'); note.replaceChildren();
+  const copying = copyText(c.text);
+  if (o.url) window.open(o.url(c), '_blank', 'noopener');
+  const saveable = !!(o.save && c.blob);
+  if (saveable) {
+    if (!shareBlob) { note.textContent = 'Preparing your flier…'; try { shareBlob = await c.blob(); } catch (e) {} }
+    if (shareBlob) saveBlob(shareBlob, c.file || 'wonders-flier.png');
+  }
+  const copied = await copying, parts = [];
+  if (o.url) parts.push(p.name + ' is opening in a new tab.' + (saveable ? ' Your flier is saved: attach it to your post.' : '') + (copied ? ' The caption is copied too.' : ''));
+  else parts.push((saveable ? 'Your flier is saved' + (copied ? ' and the caption is copied. ' : '. ') : (copied ? 'The link is copied. ' : '')) + 'Open ' + p.name + ', start a ' + o.l.toLowerCase() + (saveable ? ', choose the flier from your gallery and paste the caption.' : ' and paste the link.'));
+  note.replaceChildren(h('p', {}, parts.join(' ')));
+  const target = o.url ? '' : (IS_MOBILE && o.app ? o.app : o.web);
+  if (target) note.append(h('a', {class: 'btn gold', href: target, target: '_blank', rel: 'noopener'}, 'Open ' + p.name));
+}
+async function shCopy() { const ok = await copyText(shareCtx.text); $('#shnote').replaceChildren(h('p', {}, ok ? 'Caption and link copied.' : 'Could not copy. Please try again.')); }
+async function shNative() {
+  const c = shareCtx, data = {text: c.text}; copyText(c.text);
+  try {
+    const blob = shareBlob || (c.blob ? await c.blob() : null);
+    if (blob) { const f = new File([blob], c.file || 'wonders-flier.png', {type: 'image/png'}); if (navigator.canShare && navigator.canShare({files: [f]})) data.files = [f]; }
+    await navigator.share(data);
+  } catch (e) { if (!e || e.name !== 'AbortError') $('#shnote').replaceChildren(h('p', {}, 'Could not open the share menu. Please choose a platform below.')); }
+}
+function shareFlier() { openShare({text: shareCaption(), url: siteUrl(), blob: makeFlier, file: 'wonders-flier.png'}); }
+function shareThanks() { openShare({text: 'I just came through for a student with Wonders Foundation. No student walks alone. ' + siteUrl(), url: siteUrl(), blob: makeFlier, file: 'wonders-flier.png'}); }
+function shareAsk() { openShare({text: CARDS.ask.text + ' Wonders Foundation. ' + siteUrl(), url: siteUrl(), blob: () => cardBlob('ask'), file: 'wonders-asking-confession.png'}); }
+const TITLES = {give: 'Give', partners: 'Partner with us', crowdfunds: 'Crowdfunds', ask: 'Ask for help', chapters: 'Chapters', announcements: 'Announcements', crowd: 'Crowdfund', thanks: 'Thank you'};
+async function loadHomeStats() {
+  const r = await apiGet({action: 'impact'}); const box = $('#home_stats');
+  if (!r.ok || r.hidden || !r.rows || !r.rows[0]) return;
+  const a = r.rows[0], list = [['Students supported', a['Students supported']], ['Asks met', a['Asks met']]].filter(z => +z[1] > 0 || (typeof z[1] === 'string' && z[1]));
+  box.replaceChildren(); list.forEach(([l, v]) => box.append(h('div', {class: 'card stat'}, h('b', {}, v), l)));
+  box.style.display = list.length ? 'grid' : 'none';
+}
+function withOther(id, prompt, max) {
+  const sel = $('#' + id), box = h('input', {id: id + '_other', placeholder: prompt, maxlength: String(max || 50), style: 'display:none;margin-top:8px'});
+  sel.after(box); sel.addEventListener('change', () => { box.style.display = sel.value === 'Other' ? 'block' : 'none'; if (sel.value === 'Other') box.focus(); });
+}
+function selVal(id) { const sel = $('#' + id); if (sel.value !== 'Other') return sel.value; const t = $('#' + id + '_other').value.trim(); return t ? 'Other: ' + t : 'Other'; }
+function otherMissing(id) { return $('#' + id).value === 'Other' && !$('#' + id + '_other').value.trim(); }
+const HEARD = ['A friend or classmate', 'WhatsApp status', 'Telegram', 'Instagram', 'X (Twitter)', 'Facebook', 'TikTok', 'My church', 'A flier or poster', 'A Wonders coordinator', 'Google search', 'Other'];
+$$('.heard').forEach(sel => { sel.append(h('option', {value: ''}, 'Choose one')); HEARD.forEach(o => sel.append(h('option', {}, o))); });
+withOther('g_heard', 'Tell us how you heard about Wonders'); withOther('a_heard', 'Tell us how you heard about Wonders'); withOther('s_role', 'Tell us who you are', 30); withOther('ik_item', 'Tell us what you are giving', 40);
+async function boot() {
+  buildSchools();
+  fetch('partner-kit.pdf', {method: 'HEAD'}).then(r => { if (r.ok) $('#kitbtn').style.display = 'inline-block'; }).catch(() => {});
+  const q = new URLSearchParams(location.search);
+  if (q.get('give')) { const a = +q.get('give'); if (a >= 100) { const preset = amts.some(x => x[0] === a); pickAmt(a, preset); if (!preset) $('#other').value = a; } if (q.get('for')) $('#g_for').value = q.get('for'); if (q.get('often')) { setFreq('regular'); $('#howoften').value = ({termly: 'semester', yearly: 'session'})[q.get('often')] || q.get('often'); } go('give'); }
+  else if (q.get('crowdfund')) { $('#c_ref').value = q.get('crowdfund'); go('crowd'); }
+  else if (q.get('check')) { go('ask'); $('#checkbox').open = true; $('#chk_ref').value = q.get('check'); checkAsk(); }
+  else if (q.get('cf')) go('crowdfunds');
+  else if (q.get('stop')) { const r = await apiGet({action: 'stop', ref: q.get('stop'), t: q.get('t') || ''}); notice(r.ok ? 'Reminders stopped' : 'That link is not valid', r.ok ? 'We will not send you any more reminders for this gift. Thank you for coming through.' : 'The link may be old or incomplete.'); }
+  else if (q.get('unsub')) { const r = await apiGet({action: 'unsub', email: q.get('unsub'), t: q.get('t') || ''}); notice(r.ok ? 'You are unsubscribed' : 'That link is not valid', r.ok ? 'You will not get announcement emails any more.' : 'The link may be old or incomplete.'); }
+  else if (q.get('checkin')) { const r = await apiGet({action: 'checkin', ref: q.get('checkin'), a: q.get('a') || '', t: q.get('t') || ''}); notice(r.ok ? 'Thank you' : 'That link is not valid', r.ok ? 'We have noted your answer. We are glad you asked, and we are cheering for you.' : 'The link may be old or incomplete.'); }
+  else go('home');
+  loadHomeStats();
+  const cfg = await apiGet({action: 'config'});
+  if (cfg.ok && cfg.schools && cfg.schools.length) {
+    CFG = Object.assign({}, CFG, cfg);
+    CFG.schools = cfg.schools.map(s => Object.assign({}, (DEFAULT_SCHOOLS.find(d => d.code === s.code) || {}), s));
+    buildSchools();
+    const f = school('FUTA'); if (f) { if (f.coordinator) $('#coordname').textContent = f.coordinator; if (f.telegram) $('#tgfuta').href = f.telegram; }
+    const g = school('OTHER'); if (g && g.telegram) $('#tggen').href = g.telegram;
+    updateDot();
+  }
+}
+boot();
+</script></body></html>
